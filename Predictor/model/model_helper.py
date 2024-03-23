@@ -32,5 +32,3 @@ def calculate_mae(predict_df, predict_column_name, actual_dataset, actual_column
 
 def calculate_r2(predict_df, predict_column_name, actual_dataset, actual_column_name, period):
     return r2_score(predict_df[predict_column_name], actual_dataset[actual_column_name][period:])
-
-

@@ -7,8 +7,8 @@ from model.model_helper import calculate_rmse, calculate_mae, calculate_r2, crea
 
 MODEL_NAME = 'Random Forest'
 
-config_files = ['data_processor/data_configuration.yaml',
-                'model/random_forest/random_forest_configuration.yaml']
+config_files = ['configuration/data_configuration.yaml',
+                'configuration/random_forest_configuration.yaml']
 
 config_data = {}
 for file_path in config_files:
@@ -40,14 +40,25 @@ rf_model_best.fit(x_train, y_train)
 rf_predict = rf_model_best.predict(x_test)
 
 # Scale restore
-rf_predict = rf_predict.reshape(config_data['RESHAPE_ROW_NUMBER'], config_data['RESHAPE_COLUMN_NUMBER'])
-rf_predict_test_set = create_predict_test_set(rf_predict, x_test, config_data['AXIS_COLUMN'])
+rf_predict = rf_predict.reshape(
+    config_data['RESHAPE_ROW_NUMBER'], config_data['RESHAPE_COLUMN_NUMBER'])
+
+rf_predict_test_set = create_predict_test_set(
+    rf_predict, x_test, config_data['AXIS_COLUMN'])
 
 # Append predicted sale values
-rf_predict_series = create_predict_series(rf_predict_test_set, config_data['RANDOM_FOREST_PREDICT_COLUMN'])
-predict_df = pd.DataFrame({config_data['DATE_COLUMN']: sales_dates, config_data['RANDOM_FOREST_PREDICT_COLUMN']: rf_predict_series})
+rf_predict_series = create_predict_series(
+    rf_predict_test_set, config_data['RANDOM_FOREST_PREDICT_COLUMN'])
+
+predict_df = pd.DataFrame({config_data['DATE_COLUMN']: sales_dates,
+                          config_data['RANDOM_FOREST_PREDICT_COLUMN']: rf_predict_series})
 
 # Evaluation metrics calculation
-rf_rmse = calculate_rmse(predict_df, config_data['RANDOM_FOREST_PREDICT_COLUMN'], monthly_sales, config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])
-rf_mae = calculate_mae(predict_df, config_data['RANDOM_FOREST_PREDICT_COLUMN'], monthly_sales, config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])
-rf_r2 = calculate_r2(predict_df, config_data['RANDOM_FOREST_PREDICT_COLUMN'], monthly_sales, config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])
+rf_rmse = calculate_rmse(predict_df, config_data['RANDOM_FOREST_PREDICT_COLUMN'],
+                         monthly_sales, config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])
+
+rf_mae = calculate_mae(predict_df, config_data['RANDOM_FOREST_PREDICT_COLUMN'],
+                       monthly_sales, config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])
+
+rf_r2 = calculate_r2(predict_df, config_data['RANDOM_FOREST_PREDICT_COLUMN'],
+                     monthly_sales, config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])

@@ -17,4 +17,5 @@ def print_metrics_calculation(model_type, rmse, mae, r2):
 
 
 def print_best_mae(model):
-    print("Best MAE: {:.2f} with {} rounds".format(model.best_score, model.best_iteration + 1))
+    print("Best MAE: {:.2f} with {} rounds".format(
+        model.best_score, model.best_iteration + 1))

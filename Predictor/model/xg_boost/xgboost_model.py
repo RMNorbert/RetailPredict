@@ -6,8 +6,8 @@ from model.model_helper import calculate_rmse, calculate_mae, calculate_r2, crea
 
 MODEL_NAME = 'XG Boost'
 
-config_files = ['data_processor/data_configuration.yaml',
-                'model/xg_boost/xg_boost_configuration.yaml']
+config_files = ['configuration/data_configuration.yaml',
+                'configuration/xg_boost_configuration.yaml']
 
 config_data = {}
 for file_path in config_files:
@@ -33,16 +33,26 @@ model = xgb.train(
 xgb_predict = model.predict(dtest)
 
 # Scale restore
-xgb_predict = xgb_predict.reshape(config_data['RESHAPE_ROW_NUMBER'], config_data['RESHAPE_COLUMN_NUMBER'])
-xgb_predict_test_set = create_predict_test_set(xgb_predict, x_test, config_data['AXIS_COLUMN'])
+xgb_predict = xgb_predict.reshape(
+    config_data['RESHAPE_ROW_NUMBER'], config_data['RESHAPE_COLUMN_NUMBER'])
+
+xgb_predict_test_set = create_predict_test_set(
+    xgb_predict, x_test, config_data['AXIS_COLUMN'])
 
 # Append predicted sale values
-xgb_predict_series = create_predict_series(xgb_predict_test_set, config_data['XGB_PREDICT_COLUMN'])
+xgb_predict_series = create_predict_series(
+    xgb_predict_test_set, config_data['XGB_PREDICT_COLUMN'])
 
 # Create DataFrame with predictions
-predict_df = pd.DataFrame({config_data['DATE_COLUMN']: sales_dates, config_data['XGB_PREDICT_COLUMN']: xgb_predict_series})
+predict_df = pd.DataFrame(
+    {config_data['DATE_COLUMN']: sales_dates, config_data['XGB_PREDICT_COLUMN']: xgb_predict_series})
 
 # Evaluation metrics
-xgb_rmse = calculate_rmse(predict_df, config_data['XGB_PREDICT_COLUMN'], monthly_sales, config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])
-xgb_mae = calculate_mae(predict_df, config_data['XGB_PREDICT_COLUMN'], monthly_sales, config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])
-xgb_r2 = calculate_r2(predict_df, config_data['XGB_PREDICT_COLUMN'], monthly_sales, config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])
+xgb_rmse = calculate_rmse(predict_df, config_data['XGB_PREDICT_COLUMN'],
+                          monthly_sales, config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])
+
+xgb_mae = calculate_mae(predict_df, config_data['XGB_PREDICT_COLUMN'],
+                        monthly_sales, config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])
+
+xgb_r2 = calculate_r2(predict_df, config_data['XGB_PREDICT_COLUMN'], monthly_sales,
+                      config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])

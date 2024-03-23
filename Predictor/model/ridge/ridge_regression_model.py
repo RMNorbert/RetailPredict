@@ -7,8 +7,8 @@ from model.model_helper import calculate_rmse, calculate_mae, calculate_r2, crea
 
 MODEL_NAME = 'Ridge Regression'
 
-config_files = ['data_processor/data_configuration.yaml',
-                'model/ridge/ridge_configuration.yaml']
+config_files = ['configuration/data_configuration.yaml',
+                'configuration/ridge_configuration.yaml']
 
 config_data = {}
 for file_path in config_files:
@@ -40,14 +40,25 @@ ridge_model_best.fit(x_train, y_train)
 ridge_predict = ridge_model_best.predict(x_test)
 
 # Scale restore
-ridge_predict = ridge_predict.reshape(config_data['RESHAPE_ROW_NUMBER'], config_data['RESHAPE_COLUMN_NUMBER'])
-ridge_predict_test_set = create_predict_test_set(ridge_predict, x_test, config_data['AXIS_COLUMN'])
+ridge_predict = ridge_predict.reshape(
+    config_data['RESHAPE_ROW_NUMBER'], config_data['RESHAPE_COLUMN_NUMBER'])
+
+ridge_predict_test_set = create_predict_test_set(
+    ridge_predict, x_test, config_data['AXIS_COLUMN'])
 
 # Append predicted sale values
-ridge_predict_series = create_predict_series(ridge_predict_test_set, config_data['LINEAR_PREDICT_COLUMN'])
-predict_df = pd.DataFrame({config_data['DATE_COLUMN']: sales_dates, config_data['LINEAR_PREDICT_COLUMN']: ridge_predict_series})
+ridge_predict_series = create_predict_series(
+    ridge_predict_test_set, config_data['LINEAR_PREDICT_COLUMN'])
+
+predict_df = pd.DataFrame({config_data['DATE_COLUMN']: sales_dates,
+                          config_data['LINEAR_PREDICT_COLUMN']: ridge_predict_series})
 
 # Evaluation metrics calculation
-ridge_rmse = calculate_rmse(predict_df, config_data['LINEAR_PREDICT_COLUMN'], monthly_sales, config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])
-ridge_mae = calculate_mae(predict_df, config_data['LINEAR_PREDICT_COLUMN'], monthly_sales, config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])
-ridge_r2 = calculate_r2(predict_df, config_data['LINEAR_PREDICT_COLUMN'], monthly_sales, config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])
+ridge_rmse = calculate_rmse(predict_df, config_data['LINEAR_PREDICT_COLUMN'],
+                            monthly_sales, config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])
+
+ridge_mae = calculate_mae(predict_df, config_data['LINEAR_PREDICT_COLUMN'],
+                          monthly_sales, config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])
+
+ridge_r2 = calculate_r2(predict_df, config_data['LINEAR_PREDICT_COLUMN'],
+                        monthly_sales, config_data['SALES_COLUMN'], config_data['PREDICTION_PERIOD'])
