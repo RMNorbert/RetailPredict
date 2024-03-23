@@ -51,15 +51,19 @@ def visualize_sales(monthly_sales, predict_df):
 
     fig, (sales, sales_diff) = plt.subplots(config_data['ROWS'],
                                             config_data['COLUMNS'],
-                                            figsize=(config_data['WIDTH'], config_data['HEIGHT'])
+                                            figsize=(
+                                                config_data['WIDTH'], config_data['HEIGHT'])
                                             )
-    sales.plot(monthly_sales[config_data['DATE_COLUMN']], monthly_sales[config_data['SALES_COLUMN']])
+    sales.plot(monthly_sales[config_data['DATE_COLUMN']],
+               monthly_sales[config_data['SALES_COLUMN']])
     sales.plot(predict_df[config_data['DATE_COLUMN']], column_to_plot)
     sales.set_xlabel(config_data['X_LABEL'])
     sales.set_ylabel(config_data['Y_LABEL'])
     sales.set_title(title_to_set)
-    sales.legend([config_data['ORIGINAL_LEGEND'], config_data['PREDICTION_LEGEND']])
-    sales_diff.plot(monthly_sales[config_data['DATE_COLUMN']], monthly_sales[config_data['SALES_DIFFERENCE_COLUMN']])
+    sales.legend([config_data['ORIGINAL_LEGEND'],
+                 config_data['PREDICTION_LEGEND']])
+    sales_diff.plot(monthly_sales[config_data['DATE_COLUMN']],
+                    monthly_sales[config_data['SALES_DIFFERENCE_COLUMN']])
     sales_diff.set_xlabel(config_data['X_LABEL'])
     sales_diff.set_ylabel(config_data['Y_LABEL'])
     sales_diff.set_title(config_data['SECOND_SUBPLOT_TITLE'])
@@ -77,6 +81,7 @@ def visualize_model_comparison(model1_name, model1_stats,
     plt.plot(model3_stats)
     plt.plot(model4_stats)
     plt.title(config_data['MODEL_COMPARE_SUBPLOT_TITLE'])
-    plt.xticks(config_data['X_AXIS_COMPARISON_LABELS_POSITIONS'], labels=config_data['MODEL_COMPARISON_LABELS'])
+    plt.xticks(config_data['X_AXIS_COMPARISON_LABELS_POSITIONS'],
+               labels=config_data['MODEL_COMPARISON_LABELS'])
     plt.legend([model1_name, model2_name, model3_name, model4_name])
     plt.show()
