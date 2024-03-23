@@ -1,4 +1,4 @@
-FILE_TO_READ: Predictor/data/store_sale.csv
+FILE_TO_READ: data/store_sale.csv
 # data column constants
 DROPPED_COLUMNS: [store, item]
 DATE_COLUMN: date

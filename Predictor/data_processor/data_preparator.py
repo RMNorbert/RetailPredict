@@ -2,7 +2,7 @@ import yaml
 import pandas as pd
 
 
-with open('Predictor/data_processor/data_configuration.yaml', 'r') as file:
+with open('data_processor/data_configuration.yaml', 'r') as file:
     data = yaml.safe_load(file)
 
 

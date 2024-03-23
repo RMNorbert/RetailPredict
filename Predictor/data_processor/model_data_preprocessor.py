@@ -2,7 +2,7 @@ import yaml
 from sklearn.preprocessing import MinMaxScaler
 from data_processor.data_preparator import supervised_data
 
-with open('Predictor/data_processor/preprocessor_configuration.yaml', 'r') as file:
+with open('data_processor/preprocessor_configuration.yaml', 'r') as file:
     process_config = yaml.safe_load(file)
 
 # Splitting dataset
