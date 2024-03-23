@@ -1,0 +1,20 @@
+FILE_TO_READ: Predictor/data/store_sale.csv
+# data column constants
+DROPPED_COLUMNS: [store, item]
+DATE_COLUMN: date
+MONTH_COLUMN: month_
+PERIOD_TYPE: M
+SALES_COLUMN: sales
+SALES_DIFFERENCE_COLUMN: sales_diff
+LINEAR_PREDICT_COLUMN: linear_regression_predict
+RIDGE_PREDICT_COLUMN: ridge_regression_predict
+RANDOM_FOREST_PREDICT_COLUMN: random_forest_predict
+XGB_PREDICT_COLUMN: xgb_predict
+# numeric values
+AXIS_COLUMN: 1
+PREDICTION_PERIOD: -12
+START_MONTH_FOR_LOOP: 1
+END_MONTH_FOR_LOOP: 13
+SALE_VALUES_PERIOD: -13
+RESHAPE_COLUMN_NUMBER: 1
+RESHAPE_ROW_NUMBER: -1
