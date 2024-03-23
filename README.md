@@ -1,7 +1,8 @@
 [Table of content:](#description)
 - [Used Technologies](#used-technologies)
 - [Details](#evaluation-metrics)
-- [Commands](#commands-to-predict-sales)
+- [Commands](#to-run)
+- [Result Examples](#result-examples)
 
 # RetailPredict
 RetailPredict is a sales forecasting application providing 4 machine learning algorithms to predict future sales based on historical data and compare their performances.
@@ -32,35 +33,44 @@ The project utilizes a Store Item Demand Forecasting Data, comprising approximat
 The machine learning models are trained using the sales data of the previous 12 months. Subsequently, the trained models are tested to predict the number of items sold for the successive month. The performance of each model is assessed based on its ability to accurately forecast future sales.
 
 ---
+## To run
+1. Navigate into the Predictor directory </br></br>
+2. Create virtual environment & activate </br></br>
+3. Install the requirements </br></br>
+
+```commandline
+ pip install -r requirements.txt
+```
+
 ### Commands to predict sales:
 * **With Linear Regression:**
 ```commandline
-python Predictor/sales_predict.py 
+python sales_predict.py 
 ```
 ```commandline
-python Predictor/sales_predict.py linear 
+python sales_predict.py linear 
 ```
 ---
 * **With Ridge Regression:**
 ```commandline
-python Predictor/sales_predict.py ridge 
+python sales_predict.py ridge 
 ```
 ---
 * **With Random Forest:**
 ```commandline
-python Predictor/sales_predict.py forest 
+python sales_predict.py forest 
 ```
 ---
 * **With XG Boost:**
 ```commandline
-python Predictor/sales_predict.py xgb 
+python sales_predict.py xgb 
 ```
 ---
 ### Command for performance comparison
 ```commandline
-python Predictor/model_compare.py 
+python model_compare.py 
 ```
-# Result examples:
+# Result examples
 ## Forecast :
 ![img](./example_pictures/ForecastTwoResult.png)
 
