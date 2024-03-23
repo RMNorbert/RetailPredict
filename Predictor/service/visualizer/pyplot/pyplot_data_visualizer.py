@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 
 from custom_error.column_not_found_error import ColumnNotFoundError
 
-config_files = ['data_processor/data_configuration.yaml',
-                'service/visualizer/pyplot/pyplot_configuration.yaml']
+config_files = ['configuration/data_configuration.yaml',
+                'configuration/pyplot_configuration.yaml']
 
 config_data = {}
 for file_path in config_files:

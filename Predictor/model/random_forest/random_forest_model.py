@@ -7,8 +7,8 @@ from model.model_helper import calculate_rmse, calculate_mae, calculate_r2, crea
 
 MODEL_NAME = 'Random Forest'
 
-config_files = ['data_processor/data_configuration.yaml',
-                'model/random_forest/random_forest_configuration.yaml']
+config_files = ['configuration/data_configuration.yaml',
+                'configuration/random_forest_configuration.yaml']
 
 config_data = {}
 for file_path in config_files:
