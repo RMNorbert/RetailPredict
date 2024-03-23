@@ -1,0 +1,12 @@
+# train parameters
+STOPPING_ROUNDS: 10
+BOOST_ROUND_NUMBER: 999
+TEST_EVALUATION_SET_NAME: Test
+PARAMS :
+  max_depth: 6
+  min_child_weight: 1
+  eta: 0.3
+  subsample: 1
+  colsample_bytree: 1
+  objective: reg:squarederror
+  eval_metric: mae

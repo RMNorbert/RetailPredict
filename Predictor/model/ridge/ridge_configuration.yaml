@@ -1,0 +1,6 @@
+# parameters for GridSearch
+CV_SPLITTING_STRATEGY: 3
+PARALLEL_JOBS: -1
+VERBOSITY: 2
+PARAM_GRID:
+  alpha: [0.1, 1.0, 10.0]

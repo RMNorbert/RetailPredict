@@ -1,0 +1,21 @@
+# dimensions configuration
+ROWS: 2
+COLUMNS: 1
+WIDTH: 10
+HEIGHT: 10
+# text contents
+# label
+X_LABEL: Date
+Y_LABEL: Sales
+X_AXIS_COMPARISON_LABELS_POSITIONS: [0, 1, 2]
+MODEL_COMPARISON_LABELS: [RMSE, MAE, R2 Score]
+# title
+LINEAR_REGRESSION_SUBPLOT_TITLE: Monthly Customer Sales With Sales Forecast Using Linear Regression
+RIDGE_REGRESSION_SUBPLOT_TITLE: Monthly Customer Sales With Sales Forecast Using Ridge Regression
+RANDOM_FOREST_SUBPLOT_TITLE: Monthly Customer Sales With Sales Forecast Using Random Forest
+XGB_SUBPLOT_TITLE: Monthly Customer Sales With Sales Forecast Using XG Boost
+MODEL_COMPARE_SUBPLOT_TITLE: Model Comparison Between Linear Regression, Ridge Regression, Random Forest And XG Boost
+SECOND_SUBPLOT_TITLE: Monthly Customer Sales Difference
+# legend
+ORIGINAL_LEGEND: Original Sales
+PREDICTION_LEGEND: Predicted Sales

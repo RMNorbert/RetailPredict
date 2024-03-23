@@ -1,0 +1,9 @@
+# parameters for GridSearch
+CV_SPLITTING_STRATEGY: 3
+PARALLEL_JOBS: -1
+VERBOSITY: 2
+PARAM_GRID:
+  n_estimators: [100, 200, 300]
+  max_depth: [10, 20, 30]
+  min_samples_split: [2, 5, 10]
+  min_samples_leaf: [1, 2, 4]
