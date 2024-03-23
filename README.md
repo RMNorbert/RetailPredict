@@ -14,6 +14,8 @@ XGBoost Regression to predict future sales accurately.
 # Used technologies:
 
 * Python (3.10.12)
+* PyYAML (6.0.1)
+* autopep8 (2.0.4)
 * numpy (1.26.4)
 * pandas (2.2.1)
 * xgboost (2.0.3)
