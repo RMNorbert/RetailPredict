@@ -4,7 +4,7 @@ from data_processor.data_preparator import sales_dates, pd, monthly_sales
 from data_processor.model_data_preprocessor import x_train, y_train, x_test
 from model.model_helper import calculate_rmse, calculate_mae, calculate_r2, create_predict_series, create_predict_test_set
 
-with open('Predictor/data_processor/data_configuration.yaml', 'r') as file:
+with open('data_processor/data_configuration.yaml', 'r') as file:
     data = yaml.safe_load(file)
 
 MODEL_NAME = 'Linear Regression'

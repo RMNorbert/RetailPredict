@@ -7,8 +7,8 @@ from model.model_helper import calculate_rmse, calculate_mae, calculate_r2, crea
 
 MODEL_NAME = 'Ridge Regression'
 
-config_files = ['Predictor/data_processor/data_configuration.yaml',
-                'Predictor/model/ridge/ridge_configuration.yaml']
+config_files = ['data_processor/data_configuration.yaml',
+                'model/ridge/ridge_configuration.yaml']
 
 config_data = {}
 for file_path in config_files:

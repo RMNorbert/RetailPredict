@@ -6,8 +6,8 @@ from model.model_helper import calculate_rmse, calculate_mae, calculate_r2, crea
 
 MODEL_NAME = 'XG Boost'
 
-config_files = ['Predictor/data_processor/data_configuration.yaml',
-                'Predictor/model/xg_boost/xg_boost_configuration.yaml']
+config_files = ['data_processor/data_configuration.yaml',
+                'model/xg_boost/xg_boost_configuration.yaml']
 
 config_data = {}
 for file_path in config_files:
